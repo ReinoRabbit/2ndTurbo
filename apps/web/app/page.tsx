@@ -20,10 +20,7 @@ export default function Home() {
 
   return (
     <div className={styles.page}>
-      {/* navigation goes here */}
-      {/*=======================================================*/}
 
-      {/* <NavigationMenu /> */}
       <nav>
         <NavigationMenu>
           <NavigationMenuList>
@@ -67,9 +64,7 @@ export default function Home() {
       {/*=======================================================*/}
       
       <main className={styles.main}>
-        {/* <ul>
-          <li><a href="/page2">page 2</a></li>
-        </ul> */} 
+
         <Image
           className={styles.logo}
           src="/next.svg"
@@ -81,27 +76,7 @@ export default function Home() {
 
         {/*=======================================================*/}
         <h1 className={styles.heading}>Please fill in this form</h1>
-        {/* <form>
-          <label><b>Enter your Name :</b>&nbsp;&nbsp; 
-            <input type="text" className={styles.inputField}/>
-          </label> <br />
-          <label><b>Enter your Surname :</b>&nbsp;&nbsp;
-            <input type="text" className={styles.inputField}/>
-          </label> <br />
-          <label><b>Enter your Age :</b>&nbsp;&nbsp;
-            <input type="number" className={styles.inputField}/>
-          </label> <br />
-          <label><b>Enter your Email  :</b>&nbsp;&nbsp;
-            <input type="email" className={styles.inputField}/>
-          </label> <br />
-          <label><b>Select your Gender  :</b>&nbsp;&nbsp;
-            <select className={styles.optionsDrop}>
-              <option className={styles.optionsDrop} value="N/A" defaultValue={"Select"}>Select</option>
-              <option className={styles.optionsDrop} value="Male">Male</option>
-              <option className={styles.optionsDrop} value="Femaile">Female</option>
-            </select>
-          </label>
-        </form> */}
+
         <form onSubmit={handleSubmit}>
           <table className={styles.table}>
             <tbody>
@@ -147,50 +122,6 @@ export default function Home() {
         {/*=======================================================*/} 
 
         <br />
-
-        {/* <Image
-          className={styles.logo}
-          src="/next.svg"
-          alt="Next.js logo"
-          width={180}
-          height={38}
-          priority
-        />
-        <ol>
-          <li>
-            Get started by editing <code>app/page.tsx</code>
-          </li>
-          <li>Save and see your changes instantly.</li>
-        </ol>
-
-        <div className={styles.ctas}>
-          <a
-            className={styles.primary}
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className={styles.logo}
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={20}
-              height={20}
-            />
-            Deploy now
-          </a>
-          <a
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-            className={styles.secondary}
-          >
-            Read our docs
-          </a>
-        </div> */}
-        {/* <Button appName="web" className={styles.secondary}>
-          Open alert
-        </Button> */}
         
       </main>
 

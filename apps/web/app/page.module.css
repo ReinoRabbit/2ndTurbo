@@ -8,12 +8,14 @@
 
   display: grid;
   grid-template-rows: 20px 1fr 20px;
-  align-items: center;
-  justify-items: center;
+  align-items: left;
+  /* justify-items: center; */
   min-height: 100svh;
   padding: 80px;
   gap: 64px;
   font-synthesis: none;
+  background-color: #f2f2f2;
+  color: #1a1a1a;
 }
 
 @media (prefers-color-scheme: dark) {
@@ -24,6 +26,8 @@
 
     --button-primary-hover: #ccc;
     --button-secondary-hover: #1a1a1a;
+
+    /* background-color: #121212; */
   }
 }
 
@@ -54,6 +58,44 @@
   padding: 2px 4px;
   border-radius: 4px;
   font-weight: 600;
+}
+
+.heading {
+  font-size: xx-large;
+  font-weight: 500;
+}
+
+.table {
+  width: 40%; /* Full width */
+  border-collapse: collapse; /* Remove spacing between cells */
+}
+
+.td {
+  padding: 10px; /* Space around cells */
+  vertical-align: middle; /* Align content to the middle */
+}
+
+.inputField {
+  background-color: white;
+  color: black;
+  border: 1px solid #ccc;
+  padding: 8px;
+  border-radius: 4px;
+}
+
+.optionsDrop {
+  background-color: white;
+  color: black;
+  border: 1px solid #ccc;
+  padding: 8px;
+  border-radius: 4px;
+  width: 53%;
+}
+
+.navbar {
+  color:#1a1a1a;
+  box-shadow: 2px 2px 2px;
+  border-radius: 5px;
 }
 
 .ctas {
@@ -179,6 +221,15 @@ button.secondary {
     align-items: center;
     justify-content: center;
   }
+}
+
+.logo {
+  border: 1px solid #1a1a1a;
+  border-radius: 10px;
+}
+
+.buttonClick {
+  width: 30%;
 }
 
 @media (prefers-color-scheme: dark) {

@@ -5,16 +5,32 @@ import Image from "next/image";
 import styles from "./page.module.css";
 import { Button } from "@repo/ui/components/ui/button";
 import { NavigationMenu, NavigationMenuContent, NavigationMenuItem, NavigationMenuLink, NavigationMenuList, NavigationMenuTrigger, navigationMenuTriggerStyle } from "@repo/ui/components/ui/navigation-menu";
-import { ChangeEvent, FormEvent, useEffect } from "react";
+import { ChangeEvent, FormEvent, useEffect, useState } from "react";
 import Link from "next/link";
 import { Alert, AlertDescription, AlertTitle } from "@repo/ui/components/ui/alert";
 import { useRouter } from 'next/router';
 
 export default function Home() {
 
+  // State variables for form fields
+  const [name, setName] = useState("");
+  const [surname, setSurname] = useState("");
+  const [age, setAge] = useState("");
+  const [email, setEmail] = useState("");
+  const [gender, setGender] = useState("");
+
   const handleSubmit = (event: FormEvent) => {
     event.preventDefault();
-    alert("Form has been submitted");
+    alert(`Name: ${name}, Surname: ${surname}, Age: ${age}, Email: ${email}, Gender: ${gender}`);
+    // Build the URL with query parameters using template literals
+    const baseUrl = "http://localhost:3000/api/add-user";
+    const url = `${baseUrl}?name=${encodeURIComponent(name)}&surname=${encodeURIComponent(surname)}&age=${encodeURIComponent(age)}&email=${encodeURIComponent(email)}&gender=${encodeURIComponent(gender)}`;
+
+    // Log the constructed URL or perform an API request with it
+    console.log("Constructed URL:", url);
+
+    // Redirect to the constructed URL
+    window.location.href = url;
   }
 
 
@@ -83,31 +99,31 @@ export default function Home() {
               <tr>
                 <td className={styles.td}><b>Enter your Name:</b></td>
                 <td className={styles.td}>
-                  <input type="text" className={styles.inputField} />
+                  <input type="text" className={styles.inputField} value={name} onChange={(e: ChangeEvent<HTMLInputElement>) => setName(e.target.value)}/>
                 </td>
               </tr>
               <tr>
                 <td className={styles.td}><b>Enter your Surname:</b></td>
                 <td className={styles.td}>
-                  <input type="text" className={styles.inputField} />
+                  <input type="text" className={styles.inputField} value={surname} onChange={(e: ChangeEvent<HTMLInputElement>) => setSurname(e.target.value)}/>
                 </td>
               </tr>
               <tr>
                 <td className={styles.td}><b>Enter your Age:</b></td>
                 <td className={styles.td}>
-                  <input type="number" className={styles.inputField} />
+                  <input type="number" className={styles.inputField} value={age} onChange={(e: ChangeEvent<HTMLInputElement>) => setAge(e.target.value)}/>
                 </td>
               </tr>
               <tr>
                 <td className={styles.td}><b>Enter your Email:</b></td>
                 <td className={styles.td}>
-                  <input type="email" className={styles.inputField} />
+                  <input type="email" className={styles.inputField} value={email} onChange={(e: ChangeEvent<HTMLInputElement>) => setEmail(e.target.value)}/>
                 </td>
               </tr>
               <tr>
                 <td className={styles.td}><b>Select your Gender:</b></td>
                 <td className={styles.td}>
-                  <select className={styles.optionsDrop}>
+                  <select className={styles.optionsDrop} value={gender} onChange={(e: ChangeEvent<HTMLSelectElement>) => setGender(e.target.value)}>
                     <option className={styles.optionsDrop} value="N/A" defaultValue={"Select"}>Select</option>
                     <option className={styles.optionsDrop} value="Male">Male</option>
                     <option className={styles.optionsDrop} value="Female">Female</option>
@@ -117,7 +133,10 @@ export default function Home() {
             </tbody>
           </table>
           <br />
-          <Button className={styles.buttonClick} variant="default">Submit Form</Button>
+          <Button className={styles.buttonClick} variant="default"><a href=""></a>Submit Form</Button>
+          {/* http://localhost:3000/api/add-user?name=John&surname=Doe&age=30&email=johndoe@example.com&gender=Male */}
+          {/* http://localhost:3000/api/add-user?name=Jane&surname=Smith&age=25&email=janesmith@example.com&gender=Female */}
+          {/* http://localhost:3000/api/add-user?name=Reino&surname=Powell&age=23&email=rpowell@example.com&gender=Male */}
         </form>
         {/*=======================================================*/} 
 

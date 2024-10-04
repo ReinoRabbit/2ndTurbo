@@ -44,7 +44,7 @@ const Page2 = () => {
 
             <NavigationMenuItem className={styles.navbar}>
               <Link href="/page3" legacyBehavior passHref>
-                <NavigationMenuLink className={navigationMenuTriggerStyle()}>Page 3</NavigationMenuLink>
+                <NavigationMenuLink className={navigationMenuTriggerStyle()}>Display user data</NavigationMenuLink>
               </Link>
             </NavigationMenuItem>
 

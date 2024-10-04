@@ -60,7 +60,7 @@ export default function Home() {
             <NavigationMenuItem className = {styles.navbar}>
               <Link href="/page3" legacyBehavior passHref>
                 <NavigationMenuLink className={navigationMenuTriggerStyle()}>
-                  Page 3
+                  Display user data
                 </NavigationMenuLink>
               </Link>
             </NavigationMenuItem>

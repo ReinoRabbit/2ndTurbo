@@ -22,7 +22,7 @@ const Page3 = () => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await fetch("/api/get-user", {
+        const response = await fetch(`/api/get-user?ts=${Date.now()}`, {
           method: "GET",
           cache: "no-store",  // Disable caching to always get fresh data
         });

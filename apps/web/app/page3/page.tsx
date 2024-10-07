@@ -22,7 +22,7 @@ const Page3 = () => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await fetch("/api/add-user");
+        const response = await fetch("/api/get-user");
         const data = await response.json();
         
         console.log("API Response:", data);  // Debug the structure of the response

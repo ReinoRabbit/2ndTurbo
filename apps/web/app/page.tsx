@@ -19,20 +19,40 @@ export default function Home() {
   const [email, setEmail] = useState("");
   const [gender, setGender] = useState("");
 
-  const handleSubmit = (event: FormEvent) => {
+  const handleSubmit = async (event: FormEvent) => {
     event.preventDefault();
-    alert(`Name: ${name}, Surname: ${surname}, Age: ${age}, Email: ${email}, Gender: ${gender}`);
-    // Build the URL with query parameters using template literals
-    const baseUrl = "http://localhost:3000/api/add-user";
-    const url = `${baseUrl}?name=${encodeURIComponent(name)}&surname=${encodeURIComponent(surname)}&age=${encodeURIComponent(age)}&email=${encodeURIComponent(email)}&gender=${encodeURIComponent(gender)}`;
-
-    // Log the constructed URL or perform an API request with it
-    console.log("Constructed URL:", url);
-
-    // Redirect to the constructed URL
-    window.location.href = url;
-  }
-
+  
+    const data = {
+      name,
+      surname,
+      age,
+      email,
+      gender
+    };
+  
+    try {
+      const response = await fetch('/api/add-user', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(data)
+      });
+  
+      if (response.ok) {
+        const result = await response.json();
+        console.log('User added successfully:', result);
+        alert('User added successfully');
+      } else {
+        const errorData = await response.json();
+        console.error('Error:', errorData);
+        alert('Error adding user');
+      }
+    } catch (error) {
+      console.error('Error:', error);
+      alert('An unexpected error occurred');
+    }
+  };
 
   return (
     <div className={styles.page}>

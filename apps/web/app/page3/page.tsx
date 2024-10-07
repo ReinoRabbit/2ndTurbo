@@ -22,15 +22,18 @@ const Page3 = () => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await fetch("/api/get-user");
+        const response = await fetch(`/api/get-user?ts=${Date.now()}`, {
+          method: "GET",
+          cache: "no-store",  // Disable caching to always get fresh data
+        });
         const data = await response.json();
         
-        console.log("API Response:", data);  // Debug the structure of the response
+        console.log("API Response:", data);
         if (Array.isArray(data.users)) {
-          setUsers(data.users); // Only set users if it's an array
+          setUsers(data.users);
         } else {
           console.error("Users is not an array");
-          setUsers([]); // Set to empty array if the response is not as expected
+          setUsers([]);
         }
       } catch (error) {
         console.error("Error fetching users:", error);

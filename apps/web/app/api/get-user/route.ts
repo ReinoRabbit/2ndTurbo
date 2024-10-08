@@ -1,21 +1,41 @@
-import { sql } from '@vercel/postgres';
+import { PrismaClient } from '@repo/db';
 import { NextResponse } from 'next/server';
 
-export async function GET(request: Request) {
-    try {
-      // Fetch all users from the "users" table
-      const users = await sql`SELECT * FROM users;`;
+const prisma = new PrismaClient();
 
-      // Set cache-control headers to disable caching
-      const headers = new Headers();
-      headers.set("Cache-Control", "no-store, no-cache, must-revalidate, proxy-revalidate");
+export async function GET() {
+  try {
+    // Fetch all users from the "users" table using Prisma
+    const users = await prisma.user.findMany();
 
-      // Ensure users are returned as an array in the response
-      return NextResponse.json({ users: users.rows }, {
-        status: 200,
-        headers
-      }); 
-    } catch (error) {
-      return NextResponse.json({ error: 'Failed to fetch users' }, { status: 500 });
-    }
+    // Set cache-control headers to disable caching
+    const headers = new Headers();
+    headers.set("Cache-Control", "no-store, no-cache, must-revalidate, proxy-revalidate");
+
+    // Return users as JSON
+    return NextResponse.json({ users }, { status: 200, headers });
+
+  } catch (error) {
+    console.error("Error fetching users:", error);
+    return NextResponse.json({ error: 'Failed to fetch users' }, { status: 500 });
+  }
 }
+
+// export async function GET(request: Request) {
+//     try {
+//       // Fetch all users from the "users" table
+//       const users = await sql`SELECT * FROM users;`;
+
+//       // Set cache-control headers to disable caching
+//       const headers = new Headers();
+//       headers.set("Cache-Control", "no-store, no-cache, must-revalidate, proxy-revalidate");
+
+//       // Ensure users are returned as an array in the response
+//       return NextResponse.json({ users: users.rows }, {
+//         status: 200,
+//         headers
+//       }); 
+//     } catch (error) {
+//       return NextResponse.json({ error: 'Failed to fetch users' }, { status: 500 });
+//     }
+// }

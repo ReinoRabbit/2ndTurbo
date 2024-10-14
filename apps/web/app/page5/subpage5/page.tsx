@@ -1,7 +1,7 @@
 "use client";
 
 import { Button } from "@repo/ui/components/ui/button";
-import styles from "../page.module.css";
+import styles from "../../page.module.css";
 import { NavigationMenu, NavigationMenuContent, NavigationMenuItem, NavigationMenuLink, NavigationMenuList, NavigationMenuTrigger, navigationMenuTriggerStyle } from "@repo/ui/components/ui/navigation-menu";
 import Link from "next/link";
 import Image from "next/image";
@@ -65,7 +65,7 @@ const Page4 =()=> {
           height={38}
           priority
         />
-        <h1 className={styles.heading}>This is page 4</h1>
+        <h1 className={styles.heading}>This is page 5</h1>
 
 
 
